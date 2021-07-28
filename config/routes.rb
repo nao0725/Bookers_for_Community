@@ -22,5 +22,5 @@ Rails.application.routes.draw do
   get "/search" => "searches#search"
   
   #グループ機能のルーティング
-  resources :groups, only: [:new, :create, :edit, :update, :index, :show]
+  resources :groups, except: [:destroy]
 end

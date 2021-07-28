@@ -5,21 +5,22 @@
   <div class="container px-5 px-sm-0">
     <div class="row">
       <div class="col-md-3">
-        <%= render "users/info", user: @user %> <!--ログイン者情報-->
+        <%= render "users/info", user: current_user %> <!--ログイン者情報-->
         <%= render 'books/new', book: @book %> <!--投稿情報-->
       </div>
     <div class="col-md-8 offset-md-1">
-      <h2>Groups etails</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
+      <h2>Groups details</h2>
+      <table class="table table-hover table-inverse">
         <tbody>
           <tr>
-
+            <td><%= attachment_image_tag(@group, :image, fallback: "no-image-icon.jpg", size:'40x50') %></td>
+            <td><%= @group.name %></td>
+            <td><%= @group.introduction %></td>
+            <td>
+              <% if  @group.owner_id == current_user.id %>
+                <%= link_to "Edit", edit_group_path(@group), class: "btn btn-sm btn-success" %>
+              <% end %>
+            </td>
           </tr>
         </tbody>
       </table>
