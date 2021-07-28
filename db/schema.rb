@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_28_042955) do
+ActiveRecord::Schema.define(version: 2021_07_28_084019) do
 
   create_table "book_comments", force: :cascade do |t|
     t.text "comment"
@@ -92,6 +92,9 @@ ActiveRecord::Schema.define(version: 2021_07_28_042955) do
     t.string "image_id"
     t.string "profile_image_id"
     t.text "introduction"
+    t.string "invite_digest"
+    t.integer "invited_by"
+    t.datetime "invite_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -12,15 +12,17 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resources :book_comments, only: [:create, :destroy]
   end
-  
+
   #フォロー機能ルーティング
-  resources :relationships, only: [:create, :destroy] 
+  resources :relationships, only: [:create, :destroy]
    get "relationship/follow_users" => "relationships#follow_users"
    get "relationship/follower_users" => "relationships#follower_users"
-   
+
   #検索機能ルーティング
   get "/search" => "searches#search"
-  
+
   #グループ機能のルーティング
-  resources :groups, except: [:destroy]
+  resources :groups do
+    get "join" => "groups#join"
+  end
 end
