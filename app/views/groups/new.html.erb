@@ -1,0 +1,39 @@
+
+<main>
+   <% if @group.errors.any? %>
+   <div class = "text-danger h2">
+    <%= @group.errors.count %> errors prohibited this obj from being saved:
+  </div>
+    <li class = "text-danger ">
+    <% @group.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  <% end %>
+  </li>
+
+  <div class="container">
+    <div class="row">
+     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>Create group</h2>
+
+     <%= form_with model: @group, local:true do |f| %>
+
+      <label for="group_name">Group name</label>
+       <%= f.text_field :name, class: "form-control group_name" %>
+
+      <label for="group_introduction">Introduction</label>
+       <%= f.text_area :introduction ,class: "form-control group_introduction" %>
+
+      <label for="group_image">Group image</label>
+       <%= f.attachment_field :image, class: "form-control-file group_image" %>
+
+        <%= f.submit "Create group", class: "btn btn-secondary  bg-info text-white" %>
+
+      <% end %>
+      </div>
+     </div>
+  </div>
+</main>
+
+
+
